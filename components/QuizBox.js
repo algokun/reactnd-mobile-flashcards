@@ -1,25 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { surface, textPrimary, primary, secondary } from "../utils/colors";
 
-const QuizBox = ({ question, answer, index, total }) => {
-  const [showAnswer, toggleAnswer] = React.useEffect(false);
+export default class QuizBox extends Component {
+  state = {
+    showAnswer: false,
+  };
 
-  return (
-    <View style={styles.quizBox}>
-      <Text style={styles.counter}>{`${index}/${total}`}</Text>
-      <Text style={styles.question}>{question}</Text>
-      {showAnswer && <Text style={styles.counter}>{answer}</Text>}
-      <TouchableOpacity
-        onPress={showAnswer ? toggleAnswer(false) : toggleAnswer(true)}
-      >
-        <Text style={styles.flatButton}>
-          {showAnswer ? "Hide Answer" : "View Answer"}
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+  toggleAnswer = () => {
+    this.setState((currentState) => ({
+      showAnswer: !currentState.showAnswer
+    }));
+  };
+
+  render() {
+    const { question, answer, index, total } = this.props;
+
+    return (
+      <View style={styles.quizBox}>
+        <Text style={styles.counter}>{`${index}/${total}`}</Text>
+        <Text style={styles.question}>{question}</Text>
+        {this.state.showAnswer && <Text style={styles.counter}>{answer}</Text>}
+        <TouchableOpacity onPress={() => this.toggleAnswer()}>
+          <Text style={styles.flatButton}>
+            {this.state.showAnswer ? "Hide Answer" : "View Answer"}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   quizBox: {
@@ -33,6 +43,7 @@ const styles = StyleSheet.create({
     color: primary,
     fontSize: 18,
     lineHeight: 22,
+    marginTop: 10
   },
   question: {
     fontFamily: "LexendDeca",
@@ -48,5 +59,3 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
 });
-
-export default QuizBox;

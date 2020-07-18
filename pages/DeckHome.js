@@ -14,7 +14,14 @@ class DeckHome extends Component {
 
   startQuiz = () => {
     const { navigation, id } = this.props;
-    navigation.push("quiz", {
+    navigation.navigate("quiz", {
+      id,
+    });
+  };
+
+  createCard = () => {
+    const { navigation, id } = this.props;
+    navigation.navigate("addcard", {
       id,
     });
   };
@@ -40,7 +47,7 @@ class DeckHome extends Component {
           title="Add Questions"
           iconName="plus-circle"
           color={secondary}
-          onPressed={() => {}}
+          onPressed={this.createCard}
         />
       </View>
     );

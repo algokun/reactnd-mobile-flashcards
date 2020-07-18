@@ -11,9 +11,7 @@ export const getInitialData = async () => {
       AsyncStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(decks));
     }
 
-    return localStorageDecks === null
-      ? decks
-      : JSON.stringify(localStorageDecks);
+    return localStorageDecks === null ? decks : JSON.parse(localStorageDecks);
   } catch (error) {
     console.log(error);
   }
@@ -41,7 +39,7 @@ export const addCardToDeck = async ({ id, question, answer }) => {
       LOCAL_STORAGE_KEY,
       JSON.stringify({
         [id]: {
-          questions: [...decks.questions].concat(cardToAdd),
+          questions: [...deck.questions].concat(cardToAdd),
         },
       })
     );

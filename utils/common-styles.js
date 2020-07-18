@@ -62,5 +62,6 @@ export const globalStyle = StyleSheet.create({
     fontFamily: globalFont,
     color: textSecondary,
     borderRadius: 10,
+    marginBottom: 20
   },
 });

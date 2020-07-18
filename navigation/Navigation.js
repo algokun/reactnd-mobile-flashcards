@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import DeckHome from "../pages/DeckHome";
 import Quiz from "../pages/Quiz";
+import AddQuestion from "../pages/AddQuestion";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,14 @@ const Navigation = () => {
         <Stack.Screen
           name="quiz"
           component={Quiz}
+          options={{
+            animationEnabled: true,
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="addcard"
+          component={AddQuestion}
           options={{
             animationEnabled: true,
             headerShown: false,
