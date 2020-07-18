@@ -1,9 +1,10 @@
-import React from 'react'
-import { View } from 'react-native';
-import Home from './pages/Quiz';
+import React from "react";
 import { useFonts } from "expo-font";
 import { AppLoading } from "expo";
-import {globalStyle as styles} from './utils/common-styles'
+import AppNavigation from "./navigation/Navigation";
+import { View, Dimensions } from "react-native";
+import AppStatusBar from "./navigation/StatusBar";
+import { primary } from "./utils/colors";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -12,10 +13,17 @@ export default function App() {
 
   if (!fontsLoaded) {
     return <AppLoading />;
-  } 
+  }
+
   return (
-    <View style = {styles.main}>
-      <Home/>
+    <View
+      style={{
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height,
+      }}
+    >
+      <AppStatusBar backgroundColor={primary} barStyle="dark-content" />
+      <AppNavigation />
     </View>
-  )
+  );
 }

@@ -6,7 +6,7 @@ import DeckItem from "../components/DeckItem";
 
 export default function DeckHome() {
   return (
-    <View>
+    <View style={globalStyle.main}>
       <Text style={globalStyle.title}>Your Decks</Text>
       <DeckItem cards="2" title="Machine Learning" />
       <DeckItem cards="2" title="Machine Learning" />

@@ -7,7 +7,7 @@ import { textPrimary, secondary } from "../utils/colors";
 
 const DeckHome = () => {
   return (
-    <View>
+    <View style={styles.main}>
       <Appbar title="Machine Learning" subtitle="2 Cards" />
       <Text style={styles.subtitle}>Quick Actions</Text>
       <QuickActionItem

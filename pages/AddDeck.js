@@ -6,7 +6,7 @@ import { globalStyle as styles } from "../utils/common-styles";
 const AddDeck = () => {
   const [value, onChangeText] = React.useState("");
   return (
-    <View>
+    <View style = {styles.main}>
       <Text style={styles.title}>Add Deck</Text>
       <TextInput
         style={styles.inputField}

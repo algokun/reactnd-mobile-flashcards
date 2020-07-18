@@ -3,10 +3,10 @@ import Appbar from "../components/Appbar";
 import { View } from "react-native";
 import QuizBox from "../components/QuizBox";
 import Button from "../components/Button";
-
+import { globalStyle } from "../utils/common-styles";
 const Quiz = () => {
   return (
-    <View>
+    <View style={globalStyle.main}>
       <Appbar title="Machine Learning" subtitle="QUIZ" />
       <QuizBox />
       <View>
