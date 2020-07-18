@@ -4,10 +4,7 @@ import {
   secondary,
   textSecondary,
   background,
-  primary,
   textPrimary,
-  disabledSurface,
-  textDisabled,
 } from "./colors";
 
 const globalFont = "LexendDeca";
@@ -30,7 +27,7 @@ export const globalStyle = StyleSheet.create({
     fontSize: 18,
     lineHeight: 22,
     color: textPrimary,
-    marginTop: 20
+    marginTop: 20,
   },
   deckItem: {
     backgroundColor: surface,
@@ -65,31 +62,5 @@ export const globalStyle = StyleSheet.create({
     fontFamily: globalFont,
     color: textSecondary,
     borderRadius: 10,
-  },
-  primaryCTA: {
-    padding: 10,
-    backgroundColor: primary,
-    width: 100,
-    marginTop: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-  primaryCTAText: {
-    fontFamily: globalFont,
-    color: textPrimary,
-    textAlign: "center",
-  },
-  disabledCTA: {
-    padding: 10,
-    backgroundColor: disabledSurface,
-    width: 100,
-    marginTop: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-  disabledCTAText: {
-    fontFamily: globalFont,
-    color: textDisabled,
-    textAlign: "center",
   },
 });

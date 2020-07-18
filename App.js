@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native';
-import Home from './pages/DeckHome';
+import Home from './pages/Quiz';
 import { useFonts } from "expo-font";
 import { AppLoading } from "expo";
 import {globalStyle as styles} from './utils/common-styles'
