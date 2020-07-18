@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { View } from 'react-native';
+import Home from './pages/DeckHome';
+import { useFonts } from "expo-font";
+import { AppLoading } from "expo";
+import {globalStyle as styles} from './utils/common-styles'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  let [fontsLoaded] = useFonts({
+    LexendDeca: require("./assets/fonts/LexendDeca.ttf"),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } 
+  return (
+    <View style = {styles.main}>
+      <Home/>
+    </View>
+  )
+}
