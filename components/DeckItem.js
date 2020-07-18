@@ -15,12 +15,7 @@ class DeckItem extends Component {
           <Text style={styles.deckCards}>{cards} cards</Text>
           <Text style={styles.deckTitle}>{deck.title}</Text>
         </View>
-        <Feather
-          name="arrow-right-circle"
-          color={textPrimary}
-          size={24}
-          onPress={() => console.log("Pressed")}
-        />
+        <Feather name="arrow-right-circle" color={textPrimary} size={24} />
       </View>
     );
   }

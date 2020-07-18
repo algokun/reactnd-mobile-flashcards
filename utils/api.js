@@ -1,21 +1,67 @@
-import { _addCardToDeck, _getDeck, _getDecks, _saveDeckTitle } from "./data";
+import { decks } from "./data";
+import { AsyncStorage } from "react-native";
 
-export function getInitialData() {
-  return Promise.all([_getDecks()]).then(([decks]) => decks);
-}
+const LOCAL_STORAGE_KEY = "DECK_LIST";
 
-export function getDeckById(id) {
-  return _getDeck(id);
-}
+export const getInitialData = async () => {
+  try {
+    const localStorageDecks = await AsyncStorage.getItem(LOCAL_STORAGE_KEY);
 
-export function addCardToDeck({ id, question, answer }) {
-  return _addCardToDeck({
-    id,
-    question,
-    answer,
-  });
-}
+    if (localStorageDecks === null) {
+      AsyncStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(decks));
+    }
 
-export function createDeck(title) {
-  return _saveDeckTitle(title);
-}
+    return localStorageDecks === null
+      ? decks
+      : JSON.stringify(localStorageDecks);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getDeckById = async (id) => {
+  try {
+    const localStorageDecks = await AsyncStorage.getItem(LOCAL_STORAGE_KEY);
+
+    return JSON.parse(localStorageDecks)[id];
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const addCardToDeck = async ({ id, question, answer }) => {
+  try {
+    const deck = await getDeckById(id);
+    const cardToAdd = {
+      question,
+      answer,
+    };
+
+    await AsyncStorage.mergeItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({
+        [id]: {
+          questions: [...decks.questions].concat(cardToAdd),
+        },
+      })
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createDeck = async (title) => {
+  try {
+    await AsyncStorage.mergeItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({
+        [title]: {
+          title,
+          questions: [],
+        },
+      })
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};

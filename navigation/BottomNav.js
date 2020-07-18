@@ -10,7 +10,6 @@ const Tab = createMaterialBottomTabNavigator();
 export default function Navigation() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
       activeColor={primary}
       inactiveColor={textPrimary}
       barStyle={{ backgroundColor: surface }}
@@ -22,7 +21,7 @@ export default function Navigation() {
             <Feather name="home" color={color} size={24} />
           ),
         }}
-        name="home"
+        name="decklist"
         component={Home}
       />
       <Tab.Screen
@@ -32,7 +31,7 @@ export default function Navigation() {
             <Feather name="plus-square" color={color} size={24} />
           ),
         }}
-        name="add"
+        name="adddeck"
         component={AddDeck}
       />
     </Tab.Navigator>

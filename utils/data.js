@@ -1,5 +1,5 @@
-let decks = {
-  "112121": {
+export const decks = {
+  "Silicon Valley": {
     title: "Silicon Valley",
     questions: [
       {
@@ -12,7 +12,7 @@ let decks = {
       },
     ],
   },
-  "112222": {
+  "Game of Thrones": {
     title: "Game of Thrones",
     questions: [
       {
@@ -27,64 +27,64 @@ let decks = {
   },
 };
 
-export const _getDecks = () => {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...decks }), 1000);
-  });
-};
+// export const _getDecks = () => {
+//   return new Promise((res, rej) => {
+//     setTimeout(() => res({ ...decks }), 1000);
+//   });
+// };
 
-export const _getDeck = (id) => {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      if (!decks[id]) rej("No Deck Exist");
-      else res({ ...decks[id] });
-    }, 1000);
-  });
-};
+// export const _getDeck = (id) => {
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       if (!decks[id]) rej("No Deck Exist");
+//       else res({ ...decks[id] });
+//     }, 1000);
+//   });
+// };
 
-export const _saveDeckTitle = (title) => {
-  const id = generateUID();
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      decks = {
-        ...decks,
-        [id]: {
-          title,
-          questions: [],
-        },
-      };
+// export const _saveDeckTitle = (title) => {
+//   const id = generateUID();
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       decks = {
+//         ...decks,
+//         [id]: {
+//           title,
+//           questions: [],
+//         },
+//       };
 
-      res({
-        id,
-      });
-    }, 1000);
-  });
-};
+//       res({
+//         id,
+//       });
+//     }, 1000);
+//   });
+// };
 
-export const _addCardToDeck = ({ id, question, answer }) => {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      decks = {
-        ...decks,
-        [id]: {
-          questions: [
-            ...decks[id].questions,
-            {
-              question,
-              answer,
-            },
-          ],
-        },
-      };
+// export const _addCardToDeck = ({ id, question, answer }) => {
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       decks = {
+//         ...decks,
+//         [id]: {
+//           questions: [
+//             ...decks[id].questions,
+//             {
+//               question,
+//               answer,
+//             },
+//           ],
+//         },
+//       };
 
-      res();
-    }, 1000);
-  });
-};
+//       res();
+//     }, 1000);
+//   });
+// };
 
-function generateUID() {
-  return (
-    Math.random().toString(36).substring(2, 15) +
-    Math.random().toString(36).substring(2, 15)
-  );
-}
+// function generateUID() {
+//   return (
+//     Math.random().toString(36).substring(2, 15) +
+//     Math.random().toString(36).substring(2, 15)
+//   );
+// }

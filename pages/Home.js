@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { globalStyle } from "../utils/common-styles";
 import DeckItem from "../components/DeckItem";
 import { connect } from "react-redux";
@@ -11,13 +10,29 @@ class Home extends Component {
     this.props.dispatch(handleInitialData());
   }
 
+  viewDeckHome = (id) => {
+    const { navigation } = this.props;
+
+    navigation.navigate("deck", {
+      id: id,
+    });
+  };
+
   render() {
     const { decks } = this.props;
     return (
       <View style={globalStyle.main}>
         <Text style={globalStyle.title}>Your Decks</Text>
         {Object.keys(decks).map((id) => {
-          return <DeckItem key={id} id={id} />;
+          return (
+            <TouchableOpacity
+              key={id}
+              activeOpacity={0.8}
+              onPress={() => this.viewDeckHome(id)}
+            >
+              <DeckItem id={id} />
+            </TouchableOpacity>
+          );
         })}
       </View>
     );

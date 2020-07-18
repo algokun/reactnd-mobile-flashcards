@@ -2,13 +2,20 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { surface, textPrimary, primary, secondary } from "../utils/colors";
 
-const QuizBox = () => {
+const QuizBox = ({ question, answer, index, total }) => {
+  const [showAnswer, toggleAnswer] = React.useEffect(false);
+
   return (
     <View style={styles.quizBox}>
-      <Text style={styles.counter}>1/3</Text>
-      <Text style={styles.question}>What is Machine Learning ?</Text>
-      <TouchableOpacity>
-        <Text style={styles.flatButton}>View Answer</Text>
+      <Text style={styles.counter}>{`${index}/${total}`}</Text>
+      <Text style={styles.question}>{question}</Text>
+      {showAnswer && <Text style={styles.counter}>{answer}</Text>}
+      <TouchableOpacity
+        onPress={showAnswer ? toggleAnswer(false) : toggleAnswer(true)}
+      >
+        <Text style={styles.flatButton}>
+          {showAnswer ? "Hide Answer" : "View Answer"}
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -19,7 +26,7 @@ const styles = StyleSheet.create({
     padding: 30,
     backgroundColor: surface,
     borderRadius: 10,
-    marginTop: 50
+    marginTop: 50,
   },
   counter: {
     fontFamily: "LexendDeca",
