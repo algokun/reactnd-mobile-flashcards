@@ -17,8 +17,13 @@ class AddDeck extends Component {
   };
 
   createDeck = () => {
-    this.props.dispatch(handleCreateDeck(this.state.title));
-    Alert.alert("Yaay", "Deck added successfully");
+    const { dispatch, navigation } = this.props;
+    const { title } = this.state;
+    dispatch(handleCreateDeck(title));
+
+    navigation.navigate("deck", {
+      id: title,
+    });
   };
 
   render() {

@@ -26,18 +26,17 @@ export const handleCreateCard = (info) => {
   };
 };
 
-const addDeck = ({ title, id }) => {
+const addDeck = ({ title }) => {
   return {
     type: CREATE_DECK,
     title,
-    id,
   };
 };
 
 export const handleCreateDeck = (title) => {
   return (dispatch) => {
-    createDeck(title).then(({id}) => {
-      dispatch(addDeck({ title, id }));
+    createDeck(title).then(() => {
+      dispatch(addDeck({ title }));
     });
   };
 };

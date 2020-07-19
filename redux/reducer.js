@@ -12,7 +12,7 @@ const decksReducer = (initialState = {}, action) => {
     case CREATE_DECK:
       return {
         ...initialState,
-        [action.id]: {
+        [action.title]: {
           title: action.title,
           questions: [],
         },
