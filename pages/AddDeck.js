@@ -16,10 +16,15 @@ class AddDeck extends Component {
     });
   };
 
-  createDeck = () => {
+  createDeck = async () => {
     const { dispatch, navigation } = this.props;
     const { title } = this.state;
+
     dispatch(handleCreateDeck(title));
+
+    await new Promise(function (resolve) {
+      setTimeout(resolve, 100);
+    });
 
     navigation.navigate("deck", {
       id: title,
