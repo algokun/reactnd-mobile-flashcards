@@ -1,6 +1,6 @@
 # Mobile Flashcards
 
-The mobile flashcards is an app that lets you remember things that you often forgot by just asking questions and answers.
+Mobile Flashcards is a native application built with React Native that helps you in remembering things. You can add decks, cards to decks and play quiz to check how much you remembered. It also helps you by sending quick remainders to study.
 
 ## What i learnt?
 
@@ -27,6 +27,7 @@ The mobile flashcards is an app that lets you remember things that you often for
 - 🗒️ Create Decks
 - 🤔 Remember using Flashcards
 - 🎁 Score to see your results
+- 🔔 Local Notifications
 
 ## Installation
 
